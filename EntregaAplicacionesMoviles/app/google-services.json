@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "280453160408",
+    "firebase_url": "https://entrega-appmoviles.firebaseio.com",
+    "project_id": "entrega-appmoviles",
+    "storage_bucket": "entrega-appmoviles.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280453160408:android:021c1dba4eb941faa0e6ad",
+        "android_client_info": {
+          "package_name": "com.example.entregaaplicacionesmoviles"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280453160408-ep56951m764f7ptu4aql24ug9a756ts3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtzWVaftb-RsOcnRnu5ApE5-ip2uJFCUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280453160408-ep56951m764f7ptu4aql24ug9a756ts3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
