@@ -22,8 +22,8 @@ public class HomeActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         button.setOnClickListener(
                 view ->{
-                    auth.signOut();
-                    Intent intent = new Intent(this,LoginActivity.class);
+                   // auth.signOut();
+                    Intent intent = new Intent(this,PurchasesAndSalesActivity.class);
                     finish();
                     startActivity(intent);
 
