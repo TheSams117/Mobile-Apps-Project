@@ -13,17 +13,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activities.PurchasesAndSalesActivity"
-            android:label="@string/title_activity_purchases_and_sales"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".activities.HomeActivity">
+        <activity android:name=".activities.PerfilActivity"></activity>
+        <activity android:name=".activities.ClothesDetailsActivity" />
+        <activity android:name=".activities.AddClothesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.PurchasesAndSalesActivity"
+            android:label="@string/title_activity_purchases_and_sales"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.HomeActivity"></activity>
         <activity android:name=".activities.RegistrationEmailActivity" />
         <activity android:name=".activities.LoginActivity" />
     </application>
