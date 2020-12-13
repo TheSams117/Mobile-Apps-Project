@@ -6,18 +6,18 @@ public class Product implements Serializable {
 
     private String name;
     private String details;
-    private int price;
-    private String idPhoto;
+    private String price;
+    private String photo;
 
     public Product(){
 
     }
 
-    public Product(String name, String details, int price, String idPhoto) {
+    public Product(String name, String details, String price, String photo) {
         this.name = name;
         this.details = details;
         this.price = price;
-        this.idPhoto = idPhoto;
+        this.photo = photo;
     }
 
     public String getName() {
@@ -36,19 +36,19 @@ public class Product implements Serializable {
         this.details = details;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public String getIdPhoto() {
-        return idPhoto;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setIdPhoto(String idPhoto) {
-        this.idPhoto = idPhoto;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

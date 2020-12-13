@@ -91,11 +91,10 @@ public class ClothesDetailsActivity extends AppCompatActivity {
                                     }
                                 }
                         );
-                        Log.e(">>>","holaa");
-                        toPerfilActivity();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
+                    toPerfilActivity();
                 }
         );
 

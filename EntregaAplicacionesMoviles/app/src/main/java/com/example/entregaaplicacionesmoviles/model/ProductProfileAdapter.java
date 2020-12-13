@@ -1,5 +1,6 @@
 package com.example.entregaaplicacionesmoviles.model;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,12 +50,17 @@ public class ProductProfileAdapter extends RecyclerView.Adapter<ProductProfileVi
     public void onBindViewHolder(@NonNull ProductProfileViewModel holder, int position) {
         holder.getNameView().setText(products.get(position).getName());
         holder.getPriceView().setText(products.get(position).getPrice());
-        storage.getReference().child("clothes").child(products.get(position).getIdPhoto()).getDownloadUrl().addOnCompleteListener(
-                task -> {
-                    String url = task.getResult().toString();
-                    Glide.with(holder.getImageView()).load(url).into(holder.getImageView());
-                }
-        );
+        Log.e(">>>>>",products.get(position).getPhoto());
+        if(products.get(position).getPhoto() != null){
+            storage.getReference().child("clothes").child(products.get(position).getPhoto()).getDownloadUrl().addOnCompleteListener(
+                    task -> {
+                        String url = task.getResult().toString();
+                        Log.e(">>>>>",url);
+                        Glide.with(holder.getImageView()).load(url).into(holder.getImageView());
+                    }
+            );
+        }
+
     }
 
     @Override

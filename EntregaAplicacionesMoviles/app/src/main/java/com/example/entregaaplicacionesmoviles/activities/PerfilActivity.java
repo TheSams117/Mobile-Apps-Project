@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.entregaaplicacionesmoviles.R;
@@ -20,12 +21,14 @@ public class PerfilActivity extends AppCompatActivity implements ProductProfileA
     private RecyclerView productsList;
     private ProductProfileAdapter adapter;
     private FirebaseFirestore db;
+    private TextView productsSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
+        productsList = findViewById(R.id.productsList);
         adapter = new ProductProfileAdapter();
         adapter.setListener(this);
         productsList.setAdapter(adapter);
@@ -33,7 +36,7 @@ public class PerfilActivity extends AppCompatActivity implements ProductProfileA
         GridLayoutManager manager = new GridLayoutManager(this,3);
         productsList.setLayoutManager(manager);
         db = FirebaseFirestore.getInstance();
-
+        productsSize = findViewById(R.id.productsSizeTv);
         getProducts();
     }
 
