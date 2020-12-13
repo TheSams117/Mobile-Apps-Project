@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".activities.LoginActivity">
 
 
@@ -102,6 +103,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:background="#FFFFFF"
+        android:drawableLeft="@drawable/ic_google__g__logo"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text="Iniciar sesión con google"
         android:textAllCaps="false"
         android:textSize="24sp"
@@ -117,16 +122,18 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/shape_login_fb"
         android:text="Iniciar sesión con facebook"
+        android:drawableLeft="@drawable/ic_facebook"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:textAllCaps="false"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginGoogleBtn" />
-
-
-
 
 
     <View

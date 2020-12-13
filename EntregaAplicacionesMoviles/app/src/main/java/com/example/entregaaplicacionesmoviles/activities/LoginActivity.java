@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
+        callbackManager = CallbackManager.Factory.create();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -95,60 +96,73 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.loginBtn:
-                if(!loginEmailEt.getText().toString().isEmpty() && !loginPasswordEt.getText().toString().isEmpty()  ){
-                    auth.signInWithEmailAndPassword(loginEmailEt.getText().toString(),loginPasswordEt.getText().toString()).addOnCompleteListener(
-                            task -> {
-                                if(task.isSuccessful()){
-                                    String uid = task.getResult().getUser().getUid();
-                                    if(task.getResult().getUser().isEmailVerified()){
-                                        Intent i = new Intent(this, HomeActivity.class);
-                                        startActivity(i);
-                                        finish();
-                                    }else{
-                                        Toast.makeText(this,"Verifica primero tu Email",Toast.LENGTH_LONG).show();
-                                        auth.signOut();
-                                    }
-                                }else {
-                                    Toast.makeText(this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
-                                }
-                            }
-                    );
-                }else{
-                    Toast.makeText(this,"Ingresa tu correo y contraseña",Toast.LENGTH_LONG).show();
-                }
+                signInWithEmail();
                 break;
             case R.id.loginGoogleBtn:
-                signIn();
+                signInWithGoolge();
                 break;
             case R.id.loginFacebookBtn:
-                callbackManager = CallbackManager.Factory.create();
-                LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email","public_profile"));
-                LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        Log.e(">>>","Entra OS");
-                        handleFacebookAccessToken(loginResult.getAccessToken());
-
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        Log.e(">>>","Entra OC");
-                        // App code
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception) {
-                        Log.e(">>>","Entra OE");
-                        // App code
-                    }
-                });
+                signInWithFacebook();
                 break;
             case R.id.registrationEmailBtn:
                 Intent emailRegistration = new Intent(this,RegistrationEmailActivity.class);
                 startActivity(emailRegistration);
                 break;
         }
+    }
+
+    private void  signInWithEmail(){
+        if(!loginEmailEt.getText().toString().isEmpty() && !loginPasswordEt.getText().toString().isEmpty()  ){
+            auth.signInWithEmailAndPassword(loginEmailEt.getText().toString(),loginPasswordEt.getText().toString()).addOnCompleteListener(
+                    task -> {
+                        if(task.isSuccessful()){
+                            String uid = task.getResult().getUser().getUid();
+                            if(task.getResult().getUser().isEmailVerified()){
+                                Intent i = new Intent(this, HomeActivity.class);
+                                startActivity(i);
+                                finish();
+                            }else{
+                                Toast.makeText(this,"Verifica primero tu Email",Toast.LENGTH_LONG).show();
+                                auth.signOut();
+                            }
+                        }else {
+                            Toast.makeText(this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                        }
+                    }
+            );
+        }else{
+            Toast.makeText(this,"Ingresa tu correo y contraseña",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void signInWithGoolge() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    private void signInWithFacebook() {
+
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email","public_profile"));
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.e(">>>","Entra OS");
+                handleFacebookAccessToken(loginResult.getAccessToken());
+
+            }
+
+            @Override
+            public void onCancel() {
+                Log.e(">>>","Entra OC");
+                // App code
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                Log.e(">>>","Entra OE");
+                // App code
+            }
+        });
     }
 
     private void handleFacebookAccessToken(AccessToken accessToken) {
@@ -167,6 +181,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
@@ -195,17 +210,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Log.e(">>>", "Google sign in failed", e);
                 // ...
             }
-        }else{
+        } else {
             // Pass the activity result back to the Facebook SDK
             callbackManager.onActivityResult(requestCode, resultCode, data);
         }
 
     }
-
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-
-
 }

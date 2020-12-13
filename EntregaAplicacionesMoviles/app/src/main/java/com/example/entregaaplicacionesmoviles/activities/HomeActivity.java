@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.entregaaplicacionesmoviles.R;
+import com.facebook.FacebookSdk;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
@@ -25,7 +27,9 @@ public class HomeActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         button.setOnClickListener(
                 view ->{
+
                     auth.signOut();
+
                     Intent intent = new Intent(this,LoginActivity.class);
 
                     //Intent intent = new Intent(this,PurchasesAndSalesActivity.class);
