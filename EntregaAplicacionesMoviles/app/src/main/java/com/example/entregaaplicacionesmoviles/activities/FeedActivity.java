@@ -87,33 +87,6 @@ public class FeedActivity extends AppCompatActivity implements StoreAdapter.OnSt
                     }
             );
         }
-
-        /*db.collection("users").document(ids.get(i)).get().addOnCompleteListener(
-                task -> {
-                    for (DocumentSnapshot document: task.getResult()){
-                        Log.e(">>>", document.getId() + " => " + document.getData());
-                        StoreModel storeModel = document.toObject(StoreModel.class);
-                        adapter.addStore(storeModel);
-                        break;
-                    }
-                }
-        );*/
-
-            /*query.get().addOnCompleteListener(
-                    task -> {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.e(">>>", document.getId() + " => " + document.getData());
-                                StoreModel storeModel = document.toObject(StoreModel.class);
-                                adapter.addStore(storeModel);
-                                break;
-                            }
-                        }else{
-                            Log.e(">>>", "error");
-                        }
-                    }
-            );*/
-
     }
 
     @Override

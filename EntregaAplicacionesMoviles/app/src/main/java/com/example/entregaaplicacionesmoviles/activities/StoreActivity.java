@@ -70,6 +70,8 @@ public class StoreActivity extends AppCompatActivity implements ProductProfileAd
 
     @Override
     public void onUserClick(Product product) {
-
+        Intent j= new Intent(this, StoreDetailsProductActivity.class);
+        j.putExtra("product", product);
+        startActivity(j);
     }
 }
