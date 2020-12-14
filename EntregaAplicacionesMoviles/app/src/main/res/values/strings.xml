@@ -3,7 +3,8 @@
     <string name="title_activity_purchases_and_sales">PurchasesAndSalesActivity</string>
     <string name="tab_text_1">Mis compras</string>
     <string name="tab_text_2">Mis ventas</string>
-    <string name="facebook_app_id">136004388284250</string> <string name="fb_login_protocol_scheme">fb136004388284250</string>
+    <string name="facebook_app_id">136004388284250</string>
+    <string name="fb_login_protocol_scheme">fb136004388284250</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
