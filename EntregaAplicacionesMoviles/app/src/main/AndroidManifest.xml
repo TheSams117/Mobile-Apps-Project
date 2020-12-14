@@ -16,7 +16,11 @@
 
         <activity android:name=".activities.StoreActivity"></activity>
         <activity android:name=".activities.FeedActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".activities.ConsultSaleActivity"></activity>
         <activity
@@ -24,11 +28,7 @@
             android:label="@string/title_activity_purchases_and_sales"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activities.EditProductActivity" />
         <activity android:name=".activities.PerfilActivity" />

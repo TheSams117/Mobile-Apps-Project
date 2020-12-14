@@ -54,6 +54,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreViewModel> {
         if(storeModels.get(position).getProducts()[0] !=null) holder.getProductPriceOne().setText(storeModels.get(position).getProducts()[0].getPrice());
         if(storeModels.get(position).getProducts()[1] !=null) holder.getProductPriceTwo().setText(storeModels.get(position).getProducts()[1].getPrice());
         if(storeModels.get(position).getProducts()[2] !=null) holder.getProductPriceThree().setText(storeModels.get(position).getProducts()[2].getPrice());
+
         if(storeModels.get(position).getProducts()[0] !=null) {
             storage.getReference().child("clothes").child(storeModels.get(position).getProducts()[0].getPhoto()).getDownloadUrl().addOnCompleteListener(
                     task -> {
@@ -64,14 +65,14 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreViewModel> {
         if(storeModels.get(position).getProducts()[1] !=null) {
             storage.getReference().child("clothes").child(storeModels.get(position).getProducts()[1].getPhoto()).getDownloadUrl().addOnCompleteListener(
                     task -> {
-                        Glide.with(holder.getProductOneImage()).load(task.getResult().toString()).into(holder.getProductOneImage());
+                        Glide.with(holder.getProductTwoImage()).load(task.getResult().toString()).into(holder.getProductTwoImage());
                     }
             );
         }
         if(storeModels.get(position).getProducts()[2] !=null) {
             storage.getReference().child("clothes").child(storeModels.get(position).getProducts()[2].getPhoto()).getDownloadUrl().addOnCompleteListener(
                     task -> {
-                        Glide.with(holder.getProductOneImage()).load(task.getResult().toString()).into(holder.getProductOneImage());
+                        Glide.with(holder.getProductThreeImage()).load(task.getResult().toString()).into(holder.getProductThreeImage());
                     }
             );
         }
