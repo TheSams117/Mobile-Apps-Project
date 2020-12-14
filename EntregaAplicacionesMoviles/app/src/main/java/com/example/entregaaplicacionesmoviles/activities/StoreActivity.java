@@ -8,56 +8,61 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.entregaaplicacionesmoviles.R;
 import com.example.entregaaplicacionesmoviles.model.Product;
 import com.example.entregaaplicacionesmoviles.model.ProductProfileAdapter;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class PerfilActivity extends AppCompatActivity implements ProductProfileAdapter.OnProductClickListener {
+public class StoreActivity extends AppCompatActivity implements ProductProfileAdapter.OnProductClickListener {
 
-    private RecyclerView productsList;
+    private TextView id;
+    private RecyclerView storeProductsList;
     private ProductProfileAdapter adapter;
     private FirebaseFirestore db;
-    private TextView productsSize;
+    private String idextra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil);
+        setContentView(R.layout.activity_store);
+        Intent i = getIntent();
+        id = findViewById(R.id.id);
+        idextra = i.getStringExtra("id");
 
-        productsList = findViewById(R.id.productsList);
+        storeProductsList = findViewById(R.id.storeProductsList);
         adapter = new ProductProfileAdapter();
         adapter.setListener(this);
-        productsList.setAdapter(adapter);
-        productsList.setHasFixedSize(true);
-        GridLayoutManager manager = new GridLayoutManager(this,3);
-        productsList.setLayoutManager(manager);
+        storeProductsList.setAdapter(adapter);
+        storeProductsList.setHasFixedSize(true);
+        GridLayoutManager manager = new GridLayoutManager(this, 3);
+        storeProductsList.setLayoutManager(manager);
         db = FirebaseFirestore.getInstance();
-        productsSize = findViewById(R.id.productsSizeTv);
-        getProducts();
+        setVars();
+        getProductsStore();
     }
 
-    private void getProducts() {
-        db.collection("users").document("jCCPvi3sB2YpPDVYUHQEH64aJep1").collection("products").addSnapshotListener(
+    private void getProductsStore() {
+        db.collection("users").document(idextra).collection("products").addSnapshotListener(
                 (value, error) -> {
-                    Log.e(">>>",Integer.toString(value.getDocuments().size()));
-                    if(value.getDocuments().size() > 0) {
+                    if (value.getDocuments().size() > 0) {
                         adapter.clear();
                         for (DocumentSnapshot document : value.getDocuments()) {
                             Log.e(">>>", document.getId() + " => " + document.getData());
                             Product product = document.toObject(Product.class);
                             adapter.addProduct(product);
                         }
-                    }else{
-                        runOnUiThread(
-                                ()->{
-                                    Toast.makeText(this,"No tienes ningún producto",Toast.LENGTH_SHORT).show();
-                                }
-                        );
                     }
+                }
+        );
+    }
+
+    private void setVars() {
+        runOnUiThread(
+                () -> {
+                    id.setText(idextra);
                 }
         );
     }
@@ -65,8 +70,6 @@ public class PerfilActivity extends AppCompatActivity implements ProductProfileA
 
     @Override
     public void onUserClick(Product product) {
-        Intent j= new Intent(this, EditProductActivity.class);
-        j.putExtra("product", product);
-        startActivity(j);
+
     }
 }

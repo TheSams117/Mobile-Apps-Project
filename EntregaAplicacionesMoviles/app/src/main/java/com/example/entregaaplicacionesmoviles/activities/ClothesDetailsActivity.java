@@ -85,7 +85,7 @@ public class ClothesDetailsActivity extends AppCompatActivity {
                                 task -> {
                                     if(task.isSuccessful()){
                                         db.collection("users")
-                                                .document("55OsQAwJpIYmaPZxmDB6GHn8AhB3")
+                                                .document("jCCPvi3sB2YpPDVYUHQEH64aJep1")
                                                 .collection("products")
                                                 .document(id).set(product);
                                     }

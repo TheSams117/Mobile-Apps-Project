@@ -60,7 +60,12 @@ public class ProductProfileAdapter extends RecyclerView.Adapter<ProductProfileVi
                     }
             );
         }
-
+        holder.getBtnView().setOnClickListener(
+                v->{
+                    Product product =products.get(position);
+                    listener.onUserClick(product);
+                }
+        );
     }
 
     @Override
