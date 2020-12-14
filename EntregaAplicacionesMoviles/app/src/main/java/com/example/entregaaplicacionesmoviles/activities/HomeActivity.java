@@ -23,10 +23,9 @@ public class HomeActivity extends AppCompatActivity {
         button.setOnClickListener(
                 view ->{
                    // auth.signOut();
-                    Intent intent = new Intent(this,PurchasesAndSalesActivity.class);
+                    Intent intent = new Intent(this,FeedActivity.class);
                     finish();
                     startActivity(intent);
-
                 }
                 );
 

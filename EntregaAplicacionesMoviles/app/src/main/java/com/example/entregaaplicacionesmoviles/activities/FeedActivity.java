@@ -13,6 +13,8 @@ import com.example.entregaaplicacionesmoviles.R;
 import com.example.entregaaplicacionesmoviles.model.Product;
 import com.example.entregaaplicacionesmoviles.model.StoreAdapter;
 import com.example.entregaaplicacionesmoviles.model.StoreModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,6 +29,8 @@ public class FeedActivity extends AppCompatActivity implements StoreAdapter.OnSt
     private StoreAdapter adapter;
     private FirebaseFirestore db;
     private ArrayList<String> ids;
+    private BottomNavigationView navigator;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +46,44 @@ public class FeedActivity extends AppCompatActivity implements StoreAdapter.OnSt
         storeList.setLayoutManager(manager);
         db = FirebaseFirestore.getInstance();
         ids = new ArrayList<>();
+        navigator = findViewById(R.id.navigator);
+        navigator.setItemIconTintList(null);
+
         getIds();
         getStores();
+
+        navigator.setOnNavigationItemSelectedListener(
+                (menuItem) ->{
+
+                    switch (menuItem.getItemId()){
+
+                        case R.id.home:
+                            Intent i = new Intent(this, FeedActivity.class);
+                            startActivity(i);
+                            break;
+
+                        case R.id.addclothe:
+                            Intent j = new Intent(this, AddClothesActivity.class);
+                            startActivity(j);
+                            break;
+
+                        case R.id.purchasesSales:
+
+                            break;
+
+                        case R.id.profile:
+                            Intent k = new Intent(this, PerfilActivity.class);
+                            startActivity(k);
+                            break;
+                    }
+
+                    return true;
+                }
+        );
     }
 
     private void getIds() {
-        db.collection("users").document("jCCPvi3sB2YpPDVYUHQEH64aJep1").collection("following").addSnapshotListener(
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("following").addSnapshotListener(
                 (value, error) -> {
                     if (value.getDocuments().size() > 0) {
                         ids.clear();
