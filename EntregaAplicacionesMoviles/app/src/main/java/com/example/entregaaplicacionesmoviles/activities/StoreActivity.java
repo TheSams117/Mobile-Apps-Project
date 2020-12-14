@@ -13,8 +13,10 @@ import com.bumptech.glide.Glide;
 import com.example.entregaaplicacionesmoviles.R;
 import com.example.entregaaplicacionesmoviles.model.Product;
 import com.example.entregaaplicacionesmoviles.model.ProductProfileAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class StoreActivity extends AppCompatActivity implements ProductProfileAdapter.OnProductClickListener {
 
@@ -23,6 +25,7 @@ public class StoreActivity extends AppCompatActivity implements ProductProfileAd
     private ProductProfileAdapter adapter;
     private FirebaseFirestore db;
     private String idextra;
+    private BottomNavigationView navigator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,37 @@ public class StoreActivity extends AppCompatActivity implements ProductProfileAd
         db = FirebaseFirestore.getInstance();
         setVars();
         getProductsStore();
+        navigator = findViewById(R.id.navigatorStore);
+        navigator.setItemIconTintList(null);
+        navigator.setSelectedItemId(R.id.home);
+        navigator.setOnNavigationItemSelectedListener(
+                (menuItem) ->{
+
+                    switch (menuItem.getItemId()){
+
+                        case R.id.home:
+                            Intent l = new Intent(this, FeedActivity.class);
+                            startActivity(l);
+                            break;
+
+                        case R.id.addclothe:
+                            Intent j = new Intent(this, AddClothesActivity.class);
+                            startActivity(j);
+                            break;
+
+                        case R.id.purchasesSales:
+
+                            break;
+
+                        case R.id.profile:
+                            Intent k = new Intent(this, PerfilActivity.class);
+                            startActivity(k);
+                            break;
+                    }
+
+                    return true;
+                }
+        );
     }
 
     private void getProductsStore() {

@@ -1,5 +1,7 @@
 package com.example.entregaaplicacionesmoviles.model;
 
+import android.widget.ImageView;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -26,6 +28,7 @@ public class StoreModel implements Serializable {
     public void setProducts(Product[] products) {
         this.products = products;
     }
+
 
     public String getName() {
         return name;

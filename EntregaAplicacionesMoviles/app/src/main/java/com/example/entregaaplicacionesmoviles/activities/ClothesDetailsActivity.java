@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.util.Util;
 import com.example.entregaaplicacionesmoviles.R;
 import com.example.entregaaplicacionesmoviles.util.UtilDomi;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
@@ -85,7 +86,7 @@ public class ClothesDetailsActivity extends AppCompatActivity {
                                 task -> {
                                     if(task.isSuccessful()){
                                         db.collection("users")
-                                                .document("jCCPvi3sB2YpPDVYUHQEH64aJep1")
+                                                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                 .collection("products")
                                                 .document(id).set(product);
                                     }

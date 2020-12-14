@@ -5,21 +5,17 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/home_selector"
-        android:iconTint="#D39A75"
-        android:title="Home" />
+        android:iconTint="#D39A75" />
     <item
         android:id="@+id/addclothe"
         android:icon="@drawable/add_selector"
-        android:iconTint="#D39A75"
-        android:title="Add" />
+        android:iconTint="#D39A75" />
     <item
         android:id="@+id/purchasesSales"
         android:icon="@drawable/purchase_selector"
-        android:iconTint="#D39A75"
-        android:title="Purchase" />
+        android:iconTint="#D39A75" />
     <item
         android:id="@+id/profile"
         android:icon="@drawable/profile_selector"
-        android:iconTint="#D39A75"
-        android:title="Profile" />
+        android:iconTint="#D39A75" />
 </menu>
