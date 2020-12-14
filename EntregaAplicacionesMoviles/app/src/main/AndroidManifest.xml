@@ -13,8 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".activities.StoreActivity"></activity>
         <activity android:name=".activities.FeedActivity">
+
+        </activity>
+        <activity android:name=".activities.ConsultSaleActivity"></activity>
+        <activity
+            android:name=".activities.PurchasesAndSalesActivity"
+            android:label="@string/title_activity_purchases_and_sales"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,11 +35,6 @@
         <activity android:name=".activities.ClothesDetailsActivity" />
         <activity android:name=".activities.AddClothesActivity">
         </activity>
-        <activity
-            android:name=".activities.PurchasesAndSalesActivity"
-            android:label="@string/title_activity_purchases_and_sales"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.RegistrationEmailActivity" />
         <activity android:name=".activities.LoginActivity" />
     </application>
