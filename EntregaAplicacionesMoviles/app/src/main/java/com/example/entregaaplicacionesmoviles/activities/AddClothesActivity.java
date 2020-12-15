@@ -22,8 +22,8 @@ public class AddClothesActivity extends AppCompatActivity {
         addClothes = findViewById(R.id.addClothesBtn);
         addClothes.setOnClickListener(this::detailsClothes);
         navigator = findViewById(R.id.navigatorAddClothes);
-        navigator.setSelectedItemId(R.id.add);
         navigator.setItemIconTintList(null);
+        navigator.setSelectedItemId(R.id.addclothe);
         navigator.setOnNavigationItemSelectedListener(
                 (menuItem) ->{
 
