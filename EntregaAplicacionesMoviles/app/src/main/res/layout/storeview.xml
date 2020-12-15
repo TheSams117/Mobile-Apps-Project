@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_backgroundthree">
 
     <ImageView
         android:id="@+id/profileImageSV"
@@ -17,6 +18,7 @@
 
     <TextView
         android:id="@+id/storeNameSV"
+        style="@style/TitleTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -29,6 +31,7 @@
 
     <Button
         android:id="@+id/seeAllSV"
+        style="@style/TertiaryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -52,6 +55,7 @@
 
     <TextView
         android:id="@+id/productOneNameSV"
+        style="@style/TitleThree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -63,6 +67,7 @@
 
     <TextView
         android:id="@+id/productPriceOneSV"
+        style="@style/TextTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -84,6 +89,7 @@
 
     <TextView
         android:id="@+id/productTwoNameSV"
+        style="@style/TitleThree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -95,6 +101,7 @@
 
     <TextView
         android:id="@+id/productPriceTwoSV"
+        style="@style/TextTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -114,6 +121,7 @@
 
     <TextView
         android:id="@+id/productThreeNameSV"
+        style="@style/TitleTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -125,6 +133,7 @@
 
     <TextView
         android:id="@+id/productPriceThreeSV"
+        style="@style/TextTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

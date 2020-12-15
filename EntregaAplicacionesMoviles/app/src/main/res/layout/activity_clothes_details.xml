@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/custom_backgroundone"
     tools:context=".activities.ClothesDetailsActivity">
 
     <Button
         android:id="@+id/publishClothesBtn"
+        style="@style/PrimaryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="96dp"
@@ -19,9 +21,11 @@
 
     <EditText
         android:id="@+id/priceClothesEdt"
-        android:layout_width="wrap_content"
+        style="@style/EditText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="28dp"
         android:ems="10"
         android:hint="Precio"
@@ -29,32 +33,39 @@
         android:password="false"
         android:phoneNumber="true"
         app:layout_constraintBottom_toTopOf="@+id/detailsClothesEdt"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/detailsClothesEdt"
-        android:layout_width="wrap_content"
+        style="@style/EditText"
+        android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="64dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Descripción"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toTopOf="@+id/publishClothesBtn"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/nameClothesEdt"
-        android:layout_width="wrap_content"
+        style="@style/EditText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:hint="Nombre de la prenda"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/priceClothesEdt"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/clothesImg"
@@ -67,10 +78,11 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_launcher_background" />
+        tools:srcCompat="@drawable/logoapp_outtext" />
 
     <Button
         android:id="@+id/addPhotoBtn"
+        style="@style/SecondaryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"

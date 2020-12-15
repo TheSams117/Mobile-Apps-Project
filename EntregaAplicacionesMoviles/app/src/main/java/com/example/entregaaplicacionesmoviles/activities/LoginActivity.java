@@ -139,7 +139,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void  IntentToFeedActivity(){
-        Intent i = new Intent(this, HomeActivity.class);
+        Intent i = new Intent(this, FeedActivity.class);
         startActivity(i);
         finish();
     }

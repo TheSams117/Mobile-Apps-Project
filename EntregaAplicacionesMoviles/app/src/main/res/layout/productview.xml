@@ -20,6 +20,7 @@
 
     <TextView
         android:id="@+id/nameView"
+        style="@style/TitleTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -36,6 +37,7 @@
 
     <TextView
         android:id="@+id/priceView"
+        style="@style/TextTwo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -50,6 +52,7 @@
 
     <Button
         android:id="@+id/btnView"
+        style="@style/TextTwo"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:alpha="0"

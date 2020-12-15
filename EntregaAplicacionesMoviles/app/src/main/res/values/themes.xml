@@ -72,7 +72,7 @@
 
     <style name="TextTwo" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/raleway_regular</item>
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/colorDarkBrown</item>
     </style>
 

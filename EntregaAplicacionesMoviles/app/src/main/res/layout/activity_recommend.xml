@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundtwo"
     tools:context=".activities.RecommendActivity">
 
     <TextView
         android:id="@+id/textView5"
+        style="@style/TitleOne"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -24,6 +26,7 @@
 
     <TextView
         android:id="@+id/textView15"
+        style="@style/TitleTwo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -52,6 +55,7 @@
 
     <Button
         android:id="@+id/continueBut"
+        style="@style/PrimaryButton"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"

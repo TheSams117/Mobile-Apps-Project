@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/custom_backgroundone"
     tools:context=".activities.StoreActivity">
 
     <ImageView
@@ -20,6 +21,7 @@
 
     <TextView
         android:id="@+id/nameStore"
+        style="@style/TextOne"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -34,6 +36,7 @@
 
     <TextView
         android:id="@+id/textView16"
+        style="@style/TextTwo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -49,6 +52,7 @@
 
     <TextView
         android:id="@+id/textView17"
+        style="@style/TitleTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -62,6 +66,7 @@
 
     <TextView
         android:id="@+id/productsSizeTv"
+        style="@style/TextTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -89,9 +94,9 @@
         android:id="@+id/navigatorStore"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_navigationbackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/navigation"
-        android:background="#FFFFFF"/>
+        app:menu="@menu/navigation" />
 </androidx.constraintlayout.widget.ConstraintLayout>
