@@ -46,6 +46,13 @@ public class FeedActivity extends AppCompatActivity implements StoreAdapter.OnSt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            finish();
+            startActivity(intent);
+            return;
+        }
+
         storeList = findViewById(R.id.storeList);
         adapter = new StoreAdapter();
         adapter.setListener(this);
@@ -68,9 +75,9 @@ public class FeedActivity extends AppCompatActivity implements StoreAdapter.OnSt
         setData();
 
         navigator.setOnNavigationItemSelectedListener(
-                (menuItem) ->{
+                (menuItem) -> {
 
-                    switch (menuItem.getItemId()){
+                    switch (menuItem.getItemId()) {
 
                         case R.id.home:
                             Intent i = new Intent(this, FeedActivity.class);
@@ -83,7 +90,8 @@ public class FeedActivity extends AppCompatActivity implements StoreAdapter.OnSt
                             break;
 
                         case R.id.purchasesSales:
-
+                            Intent n = new Intent(this, PurchasesAndSalesActivity.class);
+                            startActivity(n);
                             break;
 
                         case R.id.profile:
@@ -95,6 +103,8 @@ public class FeedActivity extends AppCompatActivity implements StoreAdapter.OnSt
                     return true;
                 }
         );
+
+
     }
 
     private void setData() {
@@ -107,7 +117,7 @@ public class FeedActivity extends AppCompatActivity implements StoreAdapter.OnSt
                 task -> {
                     DocumentSnapshot document = task.getResult();
                     User user = document.toObject(User.class);
-                    nameProfile.setText(user.getName()+"!");
+                    nameProfile.setText(user.getName() + "!");
                 }
         );
     }
@@ -128,28 +138,29 @@ public class FeedActivity extends AppCompatActivity implements StoreAdapter.OnSt
         );
     }
 
+
     private void getStores() {
         for (int i = 0; i < ids.size(); i++) {
             int finalI = i;
             db.collection("users").document(ids.get(i)).get().addOnCompleteListener(
                     task -> {
-                            DocumentSnapshot document = task.getResult();
-                            Log.e(">>>", document.getId() + " => " + document.getData());
-                            StoreModel storeModel = document.toObject(StoreModel.class);
-                            db.collection("users").document(ids.get(finalI)).collection("products").limit(3).get().addOnCompleteListener(
-                                    task1 -> {
-                                        Product[] products = new Product[3];
-                                        int index = 0;
-                                        for (DocumentSnapshot child: task1.getResult()){
-                                            Product product = child.toObject(Product.class);
-                                            products[index] = product;
-                                            index++;
-                                            Log.e(">>>>", child.getData().toString());
-                                        }
-                                        storeModel.setProducts(products);
-                                        adapter.addStore(storeModel);
+                        DocumentSnapshot document = task.getResult();
+                        Log.e(">>>", document.getId() + " => " + document.getData());
+                        StoreModel storeModel = document.toObject(StoreModel.class);
+                        db.collection("users").document(ids.get(finalI)).collection("products").limit(3).get().addOnCompleteListener(
+                                task1 -> {
+                                    Product[] products = new Product[3];
+                                    int index = 0;
+                                    for (DocumentSnapshot child : task1.getResult()) {
+                                        Product product = child.toObject(Product.class);
+                                        products[index] = product;
+                                        index++;
+                                        Log.e(">>>>", child.getData().toString());
                                     }
-                            );
+                                    storeModel.setProducts(products);
+                                    adapter.addStore(storeModel);
+                                }
+                        );
                     }
             );
         }
@@ -157,7 +168,7 @@ public class FeedActivity extends AppCompatActivity implements StoreAdapter.OnSt
 
     @Override
     public void onUserClick(StoreModel storeModel) {
-        Intent j= new Intent(this, StoreActivity.class);
+        Intent j = new Intent(this, StoreActivity.class);
         j.putExtra("id", storeModel.getId());
         startActivity(j);
     }

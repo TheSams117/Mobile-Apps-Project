@@ -16,14 +16,13 @@ import com.example.entregaaplicacionesmoviles.model.Product;
 import com.example.entregaaplicacionesmoviles.model.ProductProfileAdapter;
 import com.example.entregaaplicacionesmoviles.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
 public class StoreActivity extends AppCompatActivity implements ProductProfileAdapter.OnProductClickListener {
 
-    private TextView nameStore;
+    private TextView nameStore,descriptionStore;
     private ImageView imageStore;
     private RecyclerView storeProductsList;
     private ProductProfileAdapter adapter;
@@ -42,6 +41,7 @@ public class StoreActivity extends AppCompatActivity implements ProductProfileAd
         idextra = i.getStringExtra("id");
 
         storeProductsList = findViewById(R.id.storeProductsList);
+        descriptionStore = findViewById(R.id.descriptionStore);
         adapter = new ProductProfileAdapter();
         adapter.setListener(this);
         storeProductsList.setAdapter(adapter);
@@ -71,7 +71,8 @@ public class StoreActivity extends AppCompatActivity implements ProductProfileAd
                             break;
 
                         case R.id.purchasesSales:
-
+                            Intent n = new Intent(this, PurchasesAndSalesActivity.class);
+                            startActivity(n);
                             break;
 
                         case R.id.profile:
@@ -112,6 +113,7 @@ public class StoreActivity extends AppCompatActivity implements ProductProfileAd
                     DocumentSnapshot document = task.getResult();
                     User user = document.toObject(User.class);
                     nameStore.setText(user.getName());
+                    descriptionStore.setText(user.getDescription());
                 }
         );
     }

@@ -14,7 +14,6 @@ public class ItemViewModel extends RecyclerView.ViewHolder {
     private Button botonItem;
     private TextView title;
     private TextView subtitle;
-    private TextView state;
     private ImageView imagen;
 
     public ItemViewModel(@NonNull View itemView) {
@@ -22,7 +21,6 @@ public class ItemViewModel extends RecyclerView.ViewHolder {
         botonItem=itemView.findViewById(R.id.itemButton);
         title=itemView.findViewById(R.id.topTitle);
         subtitle=itemView.findViewById(R.id.subTitle);
-        state=itemView.findViewById(R.id.itemState);
         imagen=itemView.findViewById(R.id.userImage);
     }
 
@@ -48,14 +46,6 @@ public class ItemViewModel extends RecyclerView.ViewHolder {
 
     public void setSubtitle(TextView subtitle) {
         this.subtitle = subtitle;
-    }
-
-    public TextView getState() {
-        return state;
-    }
-
-    public void setState(TextView state) {
-        this.state = state;
     }
 
     public ImageView getImagen() {

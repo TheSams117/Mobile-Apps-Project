@@ -33,7 +33,7 @@ public class PerfilActivity extends AppCompatActivity implements ProductProfileA
     private RecyclerView productsList;
     private ProductProfileAdapter adapter;
     private FirebaseFirestore db;
-    private TextView productsSize,nameUserProfile;
+    private TextView descriptionProfile,nameUserProfile;
     private FirebaseStorage storage;
     private ImageView imageProfile;
     private BottomNavigationView navigator;
@@ -52,8 +52,8 @@ public class PerfilActivity extends AppCompatActivity implements ProductProfileA
         GridLayoutManager manager = new GridLayoutManager(this,3);
         productsList.setLayoutManager(manager);
         db = FirebaseFirestore.getInstance();
-        productsSize = findViewById(R.id.productsSizeTv);
         imageProfile = findViewById(R.id.imageProfilePerfil);
+        descriptionProfile = findViewById(R.id.descriptionProfile);
         nameUserProfile = findViewById(R.id.nameUserProfile);
         logoutBtn = findViewById(R.id.logoutBtn);
         logoutBtn.setOnClickListener(this::logout);
@@ -79,7 +79,8 @@ public class PerfilActivity extends AppCompatActivity implements ProductProfileA
                             break;
 
                         case R.id.purchasesSales:
-
+                            Intent n = new Intent(this, PurchasesAndSalesActivity.class);
+                            startActivity(n);
                             break;
 
                         case R.id.profile:
@@ -136,6 +137,7 @@ public class PerfilActivity extends AppCompatActivity implements ProductProfileA
                     DocumentSnapshot document = task.getResult();
                     User user = document.toObject(User.class);
                     nameUserProfile.setText(user.getName());
+                    descriptionProfile.setText(user.getDescription());
                 }
         );
     }

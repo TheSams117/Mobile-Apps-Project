@@ -50,19 +50,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemViewModel> {
     @Override
     public void onBindViewHolder(@NonNull ItemViewModel holder, int position) {
         Item n = lista.get(position);
-        holder.getTitle().setText(n.getDetails());
-        holder.getSubtitle().setText(n.getName());
-        holder.getState().setText(n.getPrice());
-        Log.d(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", n.getUrlfoto()+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        holder.getTitle().setText(n.getName());
+        holder.getSubtitle().setText(n.getPrice());
         storage.getReference().child("profiles").child("photo").child(n.getUrlfoto()).getDownloadUrl().addOnCompleteListener(
                 task -> {
                     Glide.with(holder.getImagen()).load(task.getResult().toString()).into(holder.getImagen());
                 }
         );
-
-
-        //Glide.with(holder.getImagen()).load(n.getUrlFoto()).into(holder.getImagen());
-
     }
 
     @Override

@@ -33,7 +33,6 @@ import javax.annotation.Nullable;
 public class Fragment1 extends Fragment implements ItemAdapter.OnItemClickListener {
     View v;
     private RecyclerView comprasProceso;
-    private RecyclerView comprasPasadas;
 
     private FirebaseFirestore db;
     private FirebaseAuth auth;
@@ -74,16 +73,9 @@ public class Fragment1 extends Fragment implements ItemAdapter.OnItemClickListen
         //Poner las listas dentro del metodo oncreateview
         v = inflater.inflate(R.layout.fragment1_mypurchases_layout, container, false);
         comprasProceso = v.findViewById(R.id.comprasEnProceso);
-        comprasPasadas = v.findViewById(R.id.comprasPasadas);
-
         comprasProceso.setLayoutManager(new LinearLayoutManager(getActivity()));
         comprasProceso.setAdapter(adapter);
 
-        ItemAdapter pasadas = new ItemAdapter(getContext(), cPasadas);
-
-
-        comprasPasadas.setLayoutManager(new LinearLayoutManager(getActivity()));
-        comprasPasadas.setAdapter(pasadas);
         return v;
     }
 //public RecyclerView.ViewHolder onCreateViewHolder(){

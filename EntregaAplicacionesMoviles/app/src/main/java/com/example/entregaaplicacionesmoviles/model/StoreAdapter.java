@@ -83,13 +83,13 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreViewModel> {
                     listener.onUserClick(storeModel);
                 }
         );
-        /*if(storeModels.get(position).getProducts()[0] !=null) {
-            storage.getReference().child("profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).getDownloadUrl().addOnCompleteListener(
+        if(storeModels.get(position).getProducts()[0] !=null) {
+            storage.getReference().child("profiles").child("photo").child(storeModels.get(position).getId()).getDownloadUrl().addOnCompleteListener(
                     task -> {
                         Glide.with(holder.getStoreImage()).load(task.getResult().toString()).into(holder.getStoreImage());
                     }
             );
-        }*/
+        }
     }
 
     @Override

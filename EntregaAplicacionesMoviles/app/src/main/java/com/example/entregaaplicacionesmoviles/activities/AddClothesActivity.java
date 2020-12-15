@@ -40,7 +40,8 @@ public class AddClothesActivity extends AppCompatActivity {
                             break;
 
                         case R.id.purchasesSales:
-
+                            Intent n = new Intent(this, PurchasesAndSalesActivity.class);
+                            startActivity(n);
                             break;
 
                         case R.id.profile:

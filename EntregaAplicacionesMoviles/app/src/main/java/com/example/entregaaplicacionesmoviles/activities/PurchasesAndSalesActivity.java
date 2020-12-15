@@ -1,11 +1,13 @@
 package com.example.entregaaplicacionesmoviles.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.example.entregaaplicacionesmoviles.R;
 import com.example.entregaaplicacionesmoviles.model.ItemAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -23,6 +25,8 @@ import com.example.entregaaplicacionesmoviles.activities.ui.main.SectionsPagerAd
 
 public class PurchasesAndSalesActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private BottomNavigationView navigator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +38,41 @@ public class PurchasesAndSalesActivity extends AppCompatActivity implements View
         tabs.setupWithViewPager(viewPager);
         tabs.setSelectedTabIndicatorColor(Color.parseColor("#000000"));
         tabs.setTabTextColors(Color.parseColor("#727272"), Color.parseColor("#000000"));
-        FloatingActionButton fab = findViewById(R.id.fab);
         viewPager.setBackground(Drawable.createFromPath("0xFFF5E4"));
 
+        navigator = findViewById(R.id.navigatorPurchases);
+        navigator.setItemIconTintList(null);
+        navigator.setSelectedItemId(R.id.purchasesSales);
+
+        navigator.setOnNavigationItemSelectedListener(
+                (menuItem) ->{
+
+                    switch (menuItem.getItemId()){
+
+                        case R.id.home:
+                            Intent i = new Intent(this, FeedActivity.class);
+                            startActivity(i);
+                            break;
+
+                        case R.id.addclothe:
+                            Intent j = new Intent(this, AddClothesActivity.class);
+                            startActivity(j);
+                            break;
+
+                        case R.id.purchasesSales:
+                            Intent n = new Intent(this, PurchasesAndSalesActivity.class);
+                            startActivity(n);
+                            break;
+
+                        case R.id.profile:
+                            Intent k = new Intent(this, PerfilActivity.class);
+                            startActivity(k);
+                            break;
+                    }
+
+                    return true;
+                }
+        );
 
        // adapter=new ItemAdapter();
        // comprasEnProceso.setAdapter(adapter);
@@ -49,13 +85,6 @@ public class PurchasesAndSalesActivity extends AppCompatActivity implements View
         //comprasPasadas.setLayoutManager(manager);
        // comprasEnProceso=findViewById(R.id.comprasEnProceso);
         //comprasEnProceso=findViewById(R.id.comprasEnProceso);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override

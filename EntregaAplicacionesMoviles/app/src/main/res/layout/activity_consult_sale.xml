@@ -42,7 +42,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/descriptionStore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -63,7 +63,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionStore" />
 
     <TextView
         android:id="@+id/textView21"
@@ -207,7 +207,7 @@
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/costoTotalTV"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionStore" />
 
     <TextView
         android:id="@+id/costoTotalTV"
@@ -219,6 +219,6 @@
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionStore" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
