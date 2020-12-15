@@ -28,7 +28,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.UUID;
 import java.util.regex.Pattern;
 
 public class RegistrationEmailActivity extends AppCompatActivity implements View.OnClickListener {
@@ -42,6 +41,7 @@ public class RegistrationEmailActivity extends AppCompatActivity implements View
     private EditText emailEt;
     private EditText passwordEt;
     private EditText rePasswordEt;
+    private EditText descriptionEt;
     private Button registerBtn;
     private TextView singinTxt;
 
@@ -64,6 +64,7 @@ public class RegistrationEmailActivity extends AppCompatActivity implements View
         passwordEt = findViewById(R.id.passwordEt);
         rePasswordEt = findViewById(R.id.rePasswordEt);
         registerBtn = findViewById(R.id.registerBtn);
+        descriptionEt = findViewById(R.id.descriptionEt);
         singinTxt = findViewById(R.id.singinTxt);
 
         auth = FirebaseAuth.getInstance();
@@ -100,7 +101,7 @@ public class RegistrationEmailActivity extends AppCompatActivity implements View
                     auth.createUserWithEmailAndPassword(emailEt.getText().toString(),passwordEt.getText().toString()).addOnCompleteListener(
                             task -> {
                                 if(task.isSuccessful()){
-                                    User user = new User(task.getResult().getUser().getUid(), nameEt.getText().toString(), emailEt.getText().toString());
+                                    User user = new User(task.getResult().getUser().getUid(), nameEt.getText().toString(), emailEt.getText().toString(), descriptionEt.getText().toString());
                                     db.collection("users").document(user.getId()).set(user).addOnCompleteListener( task1 -> {
                                         if(task1.isSuccessful()){
                                             saveUserPhoto();
@@ -115,7 +116,7 @@ public class RegistrationEmailActivity extends AppCompatActivity implements View
                     );
 
                 }else{
-                    Toast.makeText(this,"Verifica el nombre, correo o contraseña",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"Verifica el nombre, decripción, foto, correo o contraseña",Toast.LENGTH_LONG).show();
                 }
 
                 break;
@@ -130,7 +131,9 @@ public class RegistrationEmailActivity extends AppCompatActivity implements View
         boolean validName = nameEt.getText().toString().isEmpty();
         boolean validPassword = passwordEt.getText().toString().equals(rePasswordEt.getText().toString()) && passwordEt.getText().toString().length()>=6;
         boolean validEmail = pattern.matcher(emailEt.getText().toString()).matches();
-        return validEmail && validPassword && !validName;
+        boolean description = descriptionEt.getText().toString().isEmpty();
+        boolean path = this.path != null ;
+        return validEmail && validPassword && !validName && !description && path;
 
     }
     private void saveUserPhoto(){
@@ -138,7 +141,6 @@ public class RegistrationEmailActivity extends AppCompatActivity implements View
             try {
                 FileInputStream fis = new FileInputStream(new File(path));
                 storage.getReference().child("profiles").child("photo").child(auth.getCurrentUser().getUid()).putStream(fis);
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -162,7 +164,6 @@ public class RegistrationEmailActivity extends AppCompatActivity implements View
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
-
     }
 
 
