@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.entregaaplicacionesmoviles.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
@@ -82,6 +83,13 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreViewModel> {
                     listener.onUserClick(storeModel);
                 }
         );
+        /*if(storeModels.get(position).getProducts()[0] !=null) {
+            storage.getReference().child("profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).getDownloadUrl().addOnCompleteListener(
+                    task -> {
+                        Glide.with(holder.getStoreImage()).load(task.getResult().toString()).into(holder.getStoreImage());
+                    }
+            );
+        }*/
     }
 
     @Override

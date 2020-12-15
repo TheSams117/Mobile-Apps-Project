@@ -127,7 +127,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/nameProfileFeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -172,7 +172,7 @@
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/telefonoUserTV"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/nameProfileFeed" />
 
     <TextView
         android:id="@+id/telefonoUserTV"

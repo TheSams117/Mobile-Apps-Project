@@ -16,6 +16,7 @@ public class StoreViewModel extends RecyclerView.ViewHolder {
     private ImageView storeImage, productOneImage, productTwoImage,productThreeImage;
     private Button seeAll;
 
+
     public StoreViewModel(@NonNull View itemView) {
         super(itemView);
         storeImage = itemView.findViewById(R.id.profileImageSV);
