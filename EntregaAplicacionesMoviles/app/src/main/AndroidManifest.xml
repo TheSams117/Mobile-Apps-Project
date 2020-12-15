@@ -13,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.RecommendActivity"></activity>
+        <activity android:name=".activities.FirstLoginActivity"></activity>
+        <activity android:name=".activities.RecommendActivity" />
+        <activity android:name=".activities.StoreDetailsProductActivity" />
+        <activity android:name=".activities.StoreActivity" />
+        <activity android:name=".activities.FeedActivity"></activity>
         <activity android:name=".activities.ConsultSaleActivity" />
         <activity
             android:name=".activities.PurchasesAndSalesActivity"
@@ -26,6 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.EditProductActivity" />
+        <activity android:name=".activities.PerfilActivity" />
+        <activity android:name=".activities.ClothesDetailsActivity" />
+        <activity android:name=".activities.AddClothesActivity" />
         <activity android:name=".activities.RegistrationEmailActivity" />
         <activity android:name=".activities.LoginActivity" />
 

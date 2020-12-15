@@ -6,11 +6,13 @@ public class User implements Serializable {
     private String id;
     private String name;
     private String email;
+    private String description;
 
-    public User(String id, String name, String email) {
+    public User(String id, String name, String email, String description) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.description = description;
     }
 
     public User() {
@@ -38,5 +40,13 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

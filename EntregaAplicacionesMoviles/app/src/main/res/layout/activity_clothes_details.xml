@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ClothesDetailsActivity">
+
+    <Button
+        android:id="@+id/publishClothesBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        android:text="Publicar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/priceClothesEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="28dp"
+        android:ems="10"
+        android:hint="Precio"
+        android:inputType="textPersonName"
+        android:password="false"
+        android:phoneNumber="true"
+        app:layout_constraintBottom_toTopOf="@+id/detailsClothesEdt"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/detailsClothesEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="64dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Descripción"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/publishClothesBtn"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/nameClothesEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Nombre de la prenda"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/priceClothesEdt"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/clothesImg"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/addPhotoBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_launcher_background" />
+
+    <Button
+        android:id="@+id/addPhotoBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="Agregar fotos"
+        app:layout_constraintBottom_toTopOf="@+id/nameClothesEdt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

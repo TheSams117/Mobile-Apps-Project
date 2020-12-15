@@ -1,6 +1,5 @@
 package com.example.entregaaplicacionesmoviles.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.entregaaplicacionesmoviles.R;
-import com.example.entregaaplicacionesmoviles.model.User;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -27,18 +25,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -56,6 +51,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private CallbackManager callbackManager;
     private GoogleSignInClient mGoogleSignInClient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +108,51 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    private void isFirstLogin(){
+
+        db.collection("users").document(auth.getCurrentUser().getUid()).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult().getData() !=null){
+                Log.e(">>>",auth.getCurrentUser().getUid());
+                haveFollowing();
+            }else {
+                IntentToFirstLoginActivity();
+            }
+        });
+    }
+
+    private void haveFollowing(){
+
+        db.collection("users").document(auth.getCurrentUser().getUid()).collection("following").get().addOnCompleteListener( task -> {
+            if(task.isSuccessful()){
+               if(task.getResult().size()>1){
+                   IntentToFeedActivity();
+               }else {
+                   IntentToRecommendActivity();
+               }
+            }
+        });
+
+
+    }
+
+    private void  IntentToFeedActivity(){
+        Intent i = new Intent(this, HomeActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    private void  IntentToRecommendActivity(){
+        Intent i = new Intent(this, RecommendActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    private void  IntentToFirstLoginActivity(){
+        Intent i = new Intent(this, FirstLoginActivity.class);
+        startActivity(i);
+        finish();
+    }
+
     private void  signInWithEmail(){
         if(!loginEmailEt.getText().toString().isEmpty() && !loginPasswordEt.getText().toString().isEmpty()  ){
             auth.signInWithEmailAndPassword(loginEmailEt.getText().toString(),loginPasswordEt.getText().toString()).addOnCompleteListener(
@@ -119,9 +160,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(task.isSuccessful()){
                             String uid = task.getResult().getUser().getUid();
                             if(task.getResult().getUser().isEmailVerified()){
-                                Intent i = new Intent(this, HomeActivity.class);
-                                startActivity(i);
-                                finish();
+                                haveFollowing();
                             }else{
                                 Toast.makeText(this,"Verifica primero tu Email",Toast.LENGTH_LONG).show();
                                 auth.signOut();
@@ -134,6 +173,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }else{
             Toast.makeText(this,"Ingresa tu correo y contraseña",Toast.LENGTH_LONG).show();
         }
+    }
+    private void handleFacebookAccessToken(AccessToken accessToken) {
+        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        isFirstLogin();
+                    }else {
+                        Toast.makeText(this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        isFirstLogin();
+                    }else {
+                        Toast.makeText(this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
     private void signInWithGoolge() {
@@ -164,35 +227,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 // App code
             }
         });
-    }
-
-    private void handleFacebookAccessToken(AccessToken accessToken) {
-        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
-                        Intent i = new Intent(this, HomeActivity.class);
-                        startActivity(i);
-                        finish();
-                    }else {
-                        Toast.makeText(this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
-                    }
-                });
-    }
-
-    private void firebaseAuthWithGoogle(String idToken) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
-                        Intent i = new Intent(this, HomeActivity.class);
-                        startActivity(i);
-                        finish();
-                    }else {
-                        Toast.makeText(this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
-                    }
-                });
     }
 
     @Override
