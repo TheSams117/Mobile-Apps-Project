@@ -3,49 +3,61 @@ package com.example.entregaaplicacionesmoviles.model;
 import java.io.Serializable;
 
 public class Item implements Serializable {
-    private String urlFoto;
-    private String encabezado1;
-    private String nombrePersona;
-    private String estado;
+    private String urlfoto;
+    private String details;
+    private String name;
+    private String price;
+    private String vendedor;
 
 
-    
-    public Item(String urlFoto, String encabezado1, String nombrePersona, String estado) {
-        this.urlFoto = urlFoto;
-        this.encabezado1 = encabezado1;
-        this.nombrePersona = nombrePersona;
-        this.estado = estado;
+    public Item(){
+
+    }
+    public Item(String urlfoto, String details, String name, String price, String vendedor) {
+        this.urlfoto = urlfoto;
+        this.details = details;
+        this.name = name;
+        this.price = price;
+        this.vendedor=vendedor;
     }
 
-    public String getUrlFoto() {
-        return urlFoto;
+    public String getUrlfoto() {
+        return urlfoto;
     }
 
-    public void setUrlFoto(String urlFoto) {
-        this.urlFoto = urlFoto;
+    public void setUrlfoto(String urlfoto) {
+        this.urlfoto = urlfoto;
     }
 
-    public String getEncabezado1() {
-        return encabezado1;
+    public String getDetails() {
+        return details;
     }
 
-    public void setEncabezado1(String encabezado1) {
-        this.encabezado1 = encabezado1;
+    public void setDetails(String details) {
+        this.details = details;
     }
 
-    public String getNombrePersona() {
-        return nombrePersona;
+    public String getName() {
+        return name;
     }
 
-    public void setNombrePersona(String nombrePersona) {
-        this.nombrePersona = nombrePersona;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getPrice() {
+        return price;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public String getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(String vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }
