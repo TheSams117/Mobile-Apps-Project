@@ -62,7 +62,7 @@
     <TextView
         android:id="@+id/productOneNameSV"
         style="@style/TitleThree"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TextView"
@@ -99,7 +99,7 @@
     <TextView
         android:id="@+id/productTwoNameSV"
         style="@style/TitleThree"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TextView"
@@ -134,7 +134,7 @@
     <TextView
         android:id="@+id/productThreeNameSV"
         style="@style/TitleTwo"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TextView"
