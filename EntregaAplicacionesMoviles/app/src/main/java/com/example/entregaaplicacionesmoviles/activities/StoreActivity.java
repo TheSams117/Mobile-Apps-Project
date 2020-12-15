@@ -122,6 +122,8 @@ public class StoreActivity extends AppCompatActivity implements ProductProfileAd
     public void onUserClick(Product product) {
         Intent j= new Intent(this, StoreDetailsProductActivity.class);
         j.putExtra("product", product);
+        j.putExtra("NombreComprador",idextra);
+        j.putExtra("nombreVendedor",nameStore.getText());
         startActivity(j);
     }
 }
