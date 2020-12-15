@@ -13,11 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.FirstLoginActivity"></activity>
+        <activity android:name=".activities.RecoverPasswordActivity"></activity>
+        <activity android:name=".activities.FirstLoginActivity" />
         <activity android:name=".activities.RecommendActivity" />
         <activity android:name=".activities.StoreDetailsProductActivity" />
         <activity android:name=".activities.StoreActivity" />
-        <activity android:name=".activities.FeedActivity"></activity>
+        <activity android:name=".activities.FeedActivity" />
         <activity android:name=".activities.ConsultSaleActivity" />
         <activity
             android:name=".activities.PurchasesAndSalesActivity"

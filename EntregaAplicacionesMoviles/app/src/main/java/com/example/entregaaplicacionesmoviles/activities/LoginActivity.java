@@ -105,6 +105,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Intent emailRegistration = new Intent(this,RegistrationEmailActivity.class);
                 startActivity(emailRegistration);
                 break;
+            case R.id.recoverPasswordTxt:
+                Intent recoverPass = new Intent(this,RecoverPasswordActivity.class);
+                startActivity(recoverPass);
+                break;
         }
     }
 
@@ -112,7 +116,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         db.collection("users").document(auth.getCurrentUser().getUid()).get().addOnCompleteListener(task -> {
             if (task.isSuccessful() && task.getResult().getData() !=null){
-                Log.e(">>>",auth.getCurrentUser().getUid());
                 haveFollowing();
             }else {
                 IntentToFirstLoginActivity();
