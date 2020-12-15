@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/custom_backgroundone"
     tools:context=".activities.StoreDetailsProductActivity">
 
     <ImageView
@@ -20,6 +21,7 @@
 
     <TextView
         android:id="@+id/productNameSDP"
+        style="@style/TitleOne"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -36,6 +38,7 @@
 
     <TextView
         android:id="@+id/productPriceSDP"
+        style="@style/TitleTwo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -50,6 +53,7 @@
 
     <Button
         android:id="@+id/buyBtnSDP"
+        style="@style/PrimaryButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -62,6 +66,7 @@
 
     <TextView
         android:id="@+id/productDetailsSDP"
+        style="@style/TitleThree"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"

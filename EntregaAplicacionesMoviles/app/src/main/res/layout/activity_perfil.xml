@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/custom_backgroundone"
     tools:context=".activities.PerfilActivity">
 
     <ImageView
@@ -16,15 +17,17 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/nameUserProfile"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/nameUserProfile"
+        style="@style/TextTwo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="Nombre del usuario"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -36,6 +39,7 @@
 
     <TextView
         android:id="@+id/textView16"
+        style="@style/TextOne"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -50,6 +54,7 @@
 
     <TextView
         android:id="@+id/textView17"
+        style="@style/TitleThree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -63,6 +68,7 @@
 
     <TextView
         android:id="@+id/productsSizeTv"
+        style="@style/TextTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -89,9 +95,20 @@
         android:id="@+id/navigatorProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_navigationbackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/navigation"
-        android:background="#FFFFFF"/>
+        app:menu="@menu/navigation" />
+
+    <Button
+        android:id="@+id/logoutBtn"
+        style="@style/SecondaryButton"
+        android:layout_width="169dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Cerrar sesión"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

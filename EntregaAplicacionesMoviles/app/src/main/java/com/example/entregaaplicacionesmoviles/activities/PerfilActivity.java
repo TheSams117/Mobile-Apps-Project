@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +18,11 @@ import com.example.entregaaplicacionesmoviles.R;
 import com.example.entregaaplicacionesmoviles.model.Product;
 import com.example.entregaaplicacionesmoviles.model.ProductProfileAdapter;
 import com.example.entregaaplicacionesmoviles.model.User;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,6 +37,7 @@ public class PerfilActivity extends AppCompatActivity implements ProductProfileA
     private FirebaseStorage storage;
     private ImageView imageProfile;
     private BottomNavigationView navigator;
+    private Button logoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,8 @@ public class PerfilActivity extends AppCompatActivity implements ProductProfileA
         productsSize = findViewById(R.id.productsSizeTv);
         imageProfile = findViewById(R.id.imageProfilePerfil);
         nameUserProfile = findViewById(R.id.nameUserProfile);
+        logoutBtn = findViewById(R.id.logoutBtn);
+        logoutBtn.setOnClickListener(this::logout);
         storage = FirebaseStorage.getInstance();
         navigator = findViewById(R.id.navigatorProfile);
         navigator.setItemIconTintList(null);
@@ -82,6 +91,18 @@ public class PerfilActivity extends AppCompatActivity implements ProductProfileA
                     return true;
                 }
         );
+    }
+
+    private void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
+        GoogleSignIn.getClient(this, new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()).signOut();
+        Intent login = new Intent(this,LoginActivity.class);
+        startActivity(login);
+        finish();
     }
 
     private void getProducts() {

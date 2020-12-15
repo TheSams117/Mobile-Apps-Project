@@ -8,4 +8,74 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+
+    </style>
+
+    <style name="PrimaryButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/custom_primarybutton</item>
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorCream</item>
+    </style>
+
+    <style name="SecondaryButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/custom_secondarybutton</item>
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/mediumGray</item>
+    </style>
+
+    <style name="TertiaryButton" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">#00FFFFFF</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorDarkBrown</item>
+    </style>
+
+    <style name="EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/custom_edittext</item>
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/colorDarkBrown</item>
+    </style>
+
+    <style name="TitleOne" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">@color/colorDarkBrown</item>
+    </style>
+
+    <style name="TitleTwo" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/raleway_medium</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">@color/colorDarkBrown</item>
+    </style>
+
+    <style name="TitleThree" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/raleway_medium</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/colorDarkBrown</item>
+    </style>
+
+    <style name="TextOne" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/colorDarkBrown</item>
+    </style>
+
+    <style name="TextTwo" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/colorDarkBrown</item>
+    </style>
+
+
+
 </resources>

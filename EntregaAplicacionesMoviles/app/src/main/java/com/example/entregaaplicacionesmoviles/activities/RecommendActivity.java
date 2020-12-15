@@ -76,7 +76,7 @@ public class RecommendActivity extends AppCompatActivity implements RecommedAdap
         db.collection("users").document(auth.getCurrentUser().getUid()).collection("following").get().addOnCompleteListener( task -> {
             if(task.isSuccessful()){
                 if(task.getResult().size()>1){
-                    Intent intent = new Intent(this, HomeActivity.class);
+                    Intent intent = new Intent(this, FeedActivity.class);
                     startActivity(intent);
                     finish();
                 }else {
